@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import Checkbox from "../CheckBox";
@@ -15,6 +15,7 @@ interface ToDoItemProps {
 const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [content, setContent] = useState('');
+    const input = useRef(null);
 
 
     useEffect(() => {
@@ -27,8 +28,11 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
 
     useEffect(() => {
         // if we just mounted, we need to have focus on input
-
-    }, []);
+        if(input.current) {
+            // @ts-ignore
+            input?.current?.focus();
+        }
+    }, [input]);
 
 
 
@@ -43,7 +47,7 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput ref={input} onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );
