@@ -37,6 +37,7 @@ const SignInScreen = () => {
                                 placeholder='Username or Email'
                                 value={email}
                                 onChangeText={setEmail}
+                                style={{ color: 'white' }}
                                 leftIcon={
                                     <Icon
                                         style={{marginRight: 10}}
@@ -52,6 +53,8 @@ const SignInScreen = () => {
                                 placeholder='Password'
                                 value={password}
                                 onChangeText={setPassword}
+                                secureTextEntry={true}
+                                style={{ color: 'white' }}
                                 leftIcon={
                                     <Icon
                                         style={{marginRight: 10}}
