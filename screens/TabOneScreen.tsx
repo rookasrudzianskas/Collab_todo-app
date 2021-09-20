@@ -10,7 +10,7 @@ import ToDoItem from "../components/ToDoItem";
 function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
     let id = '4';
-
+    const [title, setTitle] = useState('Untitled magical list');
     const [todos, setTodos] = useState([{
             id: '1',
             content: 'Buy Milk',
@@ -41,8 +41,8 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
   return (
     <View style={tw`flex p-5`}>
-        <View style={tw`flex items-center justify-center`}>
-            <Text style={tw`font-bold text-2xl`}>Collab todo</Text>
+        <View style={tw`flex items-center justify-center mb-3`}>
+            <TextInput style={tw`font-bold text-2xl text-white`} defaultValue={title} value={title} onChangeText={setTitle} />
         </View>
 
         <View style={tw``}>
