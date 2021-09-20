@@ -34,6 +34,16 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
         }
     }, [input]);
 
+    // @ts-ignore
+    const onKeyPress = ({nativeEvent}) => {
+        // console.log(nativeEvent);
+        if(nativeEvent.key === 'Backspace' && content === '') {
+            // delete item at all
+            // @TODO  delete
+            console.log("DELETED");
+        }
+    }
+
 
 
     return (
@@ -47,7 +57,7 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput ref={input} onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput ref={input} onKeyPress={onKeyPress} onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );
