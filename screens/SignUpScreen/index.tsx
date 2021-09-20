@@ -23,6 +23,7 @@ const SignUpScreen = () => {
     const text = 'Hello, my container is blurring contents underneath!';
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const [name, setName] = useState('');
 
     const navigation = useNavigation();
     const onSubmit = () => {
@@ -35,6 +36,23 @@ const SignUpScreen = () => {
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
                     <>
                         <View style={tw`mt-32 p-10`}>
+
+                            <Input
+                                placeholder='Your name'
+                                value={name}
+                                onChangeText={setName}
+                                style={{ color: 'white' }}
+                                leftIcon={
+                                    <Icon
+                                        style={{marginRight: 10}}
+                                        name='user'
+                                        size={24}
+                                        color='white'
+                                    />
+
+                                }
+                            />
+
                             <Input
                                 placeholder='Username or Email'
                                 value={email}
@@ -50,6 +68,8 @@ const SignUpScreen = () => {
 
                                 }
                             />
+
+
 
                             <Input
                                 placeholder='Password'
@@ -77,11 +97,11 @@ const SignUpScreen = () => {
                         <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
                             <View style={tw`flex items-center mt-5 flex-row justify-center bg-red-400 m-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
-                                <Text style={tw`text-white font-bold`}>Login!</Text>
+                                <Text style={tw`text-white font-bold`}>Sign Up!</Text>
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.8} >
+                        <TouchableOpacity   onPress={() => navigation.navigate('SignInScreen')} activeOpacity={0.8} >
                             <View style={tw`flex items-center -mt-8 flex-row justify-center bg-red-600 mx-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
                                 <Text style={tw`text-white font-bold`}>Already have an account? Sign In!</Text>

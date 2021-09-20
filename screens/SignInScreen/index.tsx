@@ -81,7 +81,7 @@ const SignInScreen = () => {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity activeOpacity={0.8}  onPress={() => navigation.navigate('SignUp')}>
+                        <TouchableOpacity activeOpacity={0.8}  onPress={() => navigation.navigate('SignUpScreen')}>
                             <View style={tw`flex items-center -mt-8 flex-row justify-center bg-red-600 mx-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
                                 <Text style={tw`text-white font-bold`}>New here? Sign Up!</Text>

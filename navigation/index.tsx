@@ -9,6 +9,7 @@ import LinkingConfiguration from './LinkingConfiguration';
 import ProjectsScreen from "../screens/ProjectsScreen";
 import ToDoScreen from "../screens/ToDoScreen";
 import SignInScreen from "../screens/SignInScreen";
+import SignUpScreen from "../screens/SignUpScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
     return (
@@ -35,6 +36,7 @@ function RootNavigator() {
         }}>
 
             <Stack.Screen name="SignInScreen" component={SignInScreen} />
+            <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
             <Stack.Screen name="Home" component={ProjectsScreen} />
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
 
