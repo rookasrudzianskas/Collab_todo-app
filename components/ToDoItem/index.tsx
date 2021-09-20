@@ -25,6 +25,11 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
         setContent(todo.content);
     }, [todo]);
 
+    useEffect(() => {
+        // if we just mounted, we need to have focus on input
+
+    }, []);
+
 
 
     return (
