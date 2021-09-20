@@ -1,7 +1,25 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { ActivityIndicator, StyleSheet, Text, View } from 'react-native';
+import {useNavigation} from "@react-navigation/native";
 
 const SplashScreen = () => {
+
+    const navigation = useNavigation();
+
+    const isAuthenticated = () => {
+        return false;
+    }
+
+    useEffect(() => {
+        if(isAuthenticated()) {
+            navigation.navigate('Home')
+        } else {
+            navigation.navigate('SignInScreen');
+        }
+    }, []);
+
+
+
     return (
         <View style={[styles.container, styles.horizontal]}>
             <ActivityIndicator size="large" />
