@@ -1,11 +1,8 @@
 import * as React from 'react';
 import {StyleSheet, TextInput, TouchableOpacity} from 'react-native';
-
-import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
-import { MaterialCommunityIcons } from '@expo/vector-icons';
 import Checkbox from "../components/CheckBox";
 import {useState} from "react";
 
