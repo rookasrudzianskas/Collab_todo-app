@@ -7,8 +7,9 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     KeyboardAvoidingView,
-    TouchableOpacity, ActivityIndicator
+    TouchableOpacity, ActivityIndicator, Alert
 } from 'react-native';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
 import Icon from 'react-native-vector-icons/FontAwesome';
@@ -46,8 +47,16 @@ const SignUpScreen = () => {
     const navigation = useNavigation();
     // @ts-ignore
     const [signUp, { data, error, loading }] = useMutation(SIGN_UP_MUTATION);
-    console.log(data);
-    console.log(error);
+    if(error) {
+        Alert.alert("Error signing up, please try again 🔥");
+    }
+
+    if(data) {
+        // save token and redirect home
+        AsyncStorage.setItem('token', data.signUp.token).then(() => navigation.navigate('Home'));
+    }
+    // console.log(data);
+    // console.log(error);
     // mutation[0] : a function to trigger the mutation
     // mutation[1] : result object
     // {data, error, loading} object
