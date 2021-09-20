@@ -25,7 +25,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
     return (
-        <Stack.Navigator initialRouteName={"Home"} screenOptions={{ headerShown: false,
+        <Stack.Navigator initialRouteName={"SignInScreen"} screenOptions={{ headerShown: false,
             headerStyle: {
                 backgroundColor: 'black',
             },
