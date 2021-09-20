@@ -39,17 +39,17 @@ export default function TabTwoScreen() {
           </View>
 
           <View style={tw`flex flex-row ml-3 mt-1 items-center`}>
-            <View style={tw`flex flex-row items-center bg-gray-600 px-2 py-1 rounded-full`}>
+            <View style={tw`flex flex-row items-center bg-gray-600 px-2 py-1 rounded-full border border-gray-400`}>
               <Entypo name="browser" size={22} color="lightgray" />
               <Text style={tw`ml-2`}>Date</Text>
             </View>
 
-            <View style={tw`flex flex-row items-center mx-3 bg-gray-600 px-2 py-1 rounded-full`}>
+            <View style={tw`flex flex-row items-center mx-3 bg-gray-600 px-2 py-1 rounded-full border border-gray-400`}>
               <Ionicons name="person" size={22} color="lightgray" />
               <Text style={tw`ml-2`}>Assign</Text>
             </View>
 
-            <View style={tw`flex flex-row items-center ml-0 bg-gray-600 px-2 py-1 rounded-full`}>
+            <View style={tw`flex flex-row items-center ml-0 bg-gray-600 px-2 py-1 rounded-full border border-gray-400`}>
               <AntDesign name="tag" size={22} color="lightgray" />
               <Text style={tw`ml-2`}>Tag</Text>
           </View>
