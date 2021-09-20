@@ -9,6 +9,7 @@ import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import ProjectsScreen from "../screens/ProjectsScreen";
 import ToDoScreen from "../screens/ToDoScreen";
+import SignInScreen from "../screens/SignInScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
     return (
@@ -34,6 +35,7 @@ function RootNavigator() {
             },
         }}>
 
+            <Stack.Screen name="SignInScreen" component={SignInScreen} />
             <Stack.Screen name="Home" component={ProjectsScreen} />
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
 
