@@ -3,11 +3,12 @@ import { StyleSheet } from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
+import tw from "tailwind-react-native-classnames";
 
 export default function TabTwoScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Tab Two</Text>
+    <View style={tw``}>
+      <Text style={tw``}>Tab Two</Text>
     </View>
   );
 }
