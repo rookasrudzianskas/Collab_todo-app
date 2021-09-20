@@ -37,7 +37,9 @@ const Stack = createNativeStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
   return (
-    <Stack.Navigator >
+    <Stack.Navigator
+        screenOptions={{ headerShown: false }}
+    >
       <Stack.Screen  name="Root" component={BottomTabNavigator} options={{headerShown:false}} />
       <Stack.Screen name="NotFound" component={NotFoundScreen} options={{headerShown:false}} />
     </Stack.Navigator>
@@ -63,7 +65,6 @@ function BottomTabNavigator() {
         name="TabOne"
         component={TabOneScreen}
         options={({ navigation }: RootTabScreenProps<'TabOne'>) => ({
-          title: 'Tab One',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         })}
       />
@@ -71,7 +72,6 @@ function BottomTabNavigator() {
         name="TabTwo"
         component={TabTwoScreen}
         options={{
-          title: 'Tab Two',
           tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
         }}
       />
