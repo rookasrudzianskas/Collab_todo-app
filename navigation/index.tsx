@@ -24,7 +24,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false,
+        <Stack.Navigator initialRouteName={"Home"} screenOptions={{ headerShown: false,
             headerStyle: {
                 backgroundColor: 'black',
             },
@@ -34,8 +34,8 @@ function RootNavigator() {
             },
         }}>
 
-            <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
             <Stack.Screen name="Home" component={ProjectsScreen} />
+            <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
 
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>
