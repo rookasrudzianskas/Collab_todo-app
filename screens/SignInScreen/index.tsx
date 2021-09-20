@@ -13,6 +13,7 @@ import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
+import {AntDesign} from "@expo/vector-icons";
 
 
 const SignInScreen = () => {
@@ -30,37 +31,67 @@ const SignInScreen = () => {
     // @ts-ignore
             <View>
                 <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
-                    <View style={tw`mt-32 p-10`}>
-                        <Input
-                            placeholder='Username or Email'
-                            value={email}
-                            onChangeText={setEmail}
-                            leftIcon={
-                                <Icon
-                                    style={{marginRight: 10}}
-                                    name='user'
-                                    size={24}
-                                    color='white'
-                                />
+                    <>
+                        <View style={tw`mt-32 p-10`}>
+                            <Input
+                                placeholder='Username or Email'
+                                value={email}
+                                onChangeText={setEmail}
+                                leftIcon={
+                                    <Icon
+                                        style={{marginRight: 10}}
+                                        name='user'
+                                        size={24}
+                                        color='white'
+                                    />
 
-                            }
-                        />
+                                }
+                            />
 
-                        <Input
-                            placeholder='Password'
-                            value={password}
-                            onChangeText={setPassword}
-                            leftIcon={
-                                <Icon
-                                    style={{marginRight: 10}}
-                                    name='lock'
-                                    size={24}
-                                    color='white'
-                                />
+                            <Input
+                                placeholder='Password'
+                                value={password}
+                                onChangeText={setPassword}
+                                leftIcon={
+                                    <Icon
+                                        style={{marginRight: 10}}
+                                        name='lock'
+                                        size={24}
+                                        color='white'
+                                    />
 
-                            }
-                        />
-                    </View>
+                                }
+                            />
+
+                        </View>
+
+                        <View style={tw` flex items-center justify-center`}>
+                            <Text style={tw`text-white`}>Forgot password? Reset it <Text style={tw`text-red-400`}>here</Text></Text>
+                        </View>
+
+                        <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
+                            <View style={tw`flex items-center mt-5 flex-row justify-center bg-red-400 m-12 py-2 rounded-xl`}>
+                                <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
+                                <Text style={tw`text-white font-bold`}>Login!</Text>
+                            </View>
+                        </TouchableOpacity>
+
+                       <View style={tw`mt-56`}>
+                           <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
+                               <View style={tw`flex items-center flex-row justify-center bg-blue-400 mx-12 my-3 py-2 rounded-xl`}>
+                                   <AntDesign name="google" size={24}  style={tw`text-white mr-2`} color="white" />
+                                   <Text style={tw`text-white font-bold`}>Login with Google</Text>
+                               </View>
+                           </TouchableOpacity>
+
+                           <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
+                               <View style={tw`flex items-center flex-row justify-center bg-gray-800 mx-12 py-2 rounded-xl`}>
+                                   <AntDesign name="apple1" size={24} style={tw`text-white mr-2`} color="white" />
+                                   <Text style={tw`text-white font-bold`}>Login with apple</Text>
+                               </View>
+                           </TouchableOpacity>
+                       </View>
+                    </>
                 </TouchableWithoutFeedback>
             </View>
     );
