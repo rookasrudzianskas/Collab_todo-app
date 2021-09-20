@@ -4,11 +4,17 @@ import { StyleSheet } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import tw from "tailwind-react-native-classnames";
+import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 export default function TabTwoScreen() {
   return (
     <View style={tw``}>
-      <Text style={tw``}>Tab Two</Text>
+      {/*  tasklist */}
+      <View style={tw``}>
+        <View style={tw``}>
+          <MaterialCommunityIcons name="file" size={24} color="white" />
+        </View>
+      </View>
     </View>
   );
 }

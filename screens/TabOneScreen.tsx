@@ -1,5 +1,13 @@
 import * as React from 'react';
-import {FlatList, KeyboardAvoidingView, Platform, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {
+    FlatList, Keyboard,
+    KeyboardAvoidingView,
+    Platform,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    TouchableWithoutFeedback
+} from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
@@ -41,21 +49,23 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
   return (
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={Platform.OS === "ios" ? 150 : 0} style={{flex: 1}}>
-          <View style={styles.container}>
-            <View style={tw`flex p-5`}>
-                <View style={tw`flex items-center justify-center mb-3`}>
-                    <TextInput style={tw`font-bold text-2xl text-white`} defaultValue={title} value={title} onChangeText={setTitle} />
-                </View>
+          <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+              <View style={styles.container}>
+                <View style={tw`flex p-5`}>
+                    <View style={tw`flex items-center justify-center mb-3`}>
+                        <TextInput style={tw`font-bold text-2xl text-white`} defaultValue={title} value={title} onChangeText={setTitle} />
+                    </View>
 
-                <View style={tw``}>
-                    <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item, index }) => (
-                        <ToDoItem onSubmit={() => createNewItem(index + 1)} todo={item}/>
-                    )} />
+                    <View style={tw``}>
+                        <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item, index }) => (
+                            <ToDoItem onSubmit={() => createNewItem(index + 1)} todo={item}/>
+                        )} />
 
+                    </View>
                 </View>
-            </View>
-          </View>
-      </KeyboardAvoidingView>
+              </View>
+        </TouchableWithoutFeedback>
+          </KeyboardAvoidingView>
   );
 }
 
