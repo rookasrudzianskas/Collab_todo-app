@@ -7,7 +7,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     KeyboardAvoidingView,
-    TouchableOpacity
+    TouchableOpacity, ActivityIndicator
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
@@ -15,20 +15,49 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import {AntDesign} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import {gql, useMutation} from "@apollo/client";
 
 
 const SignUpScreen = () => {
 
     const uri = 'https://s3.amazonaws.com/exp-icon-assets/ExpoEmptyManifest_192.png';
     const text = 'Hello, my container is blurring contents underneath!';
+    // ------------------------------------------ mutations --------------------------------------
+    const SIGN_UP_MUTATION = gql`
+        mutation signUp($email: String!, $password: String!, $name: String!) {
+            signUp(input: {email: $email, password: $password, name: $name}){
+                token
+                user {
+                    id
+                    name
+                    email
+                }
+            }
+        }
+    `;
+
+    // ------------------------------------------ end of mutations --------------------------------------
+
+
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
 
     const navigation = useNavigation();
+    // @ts-ignore
+    const [signUp, { data, error, loading }] = useMutation(SIGN_UP_MUTATION);
+    console.log(data);
+    console.log(error);
+    // mutation[0] : a function to trigger the mutation
+    // mutation[1] : result object
+    // {data, error, loading} object
+
+
     const onSubmit = () => {
         // we will do the logic here
         // console.log("ROKAS")
+        signUp({variables: { name, email, password }}).then();
+
     }
 
     return (
@@ -59,6 +88,7 @@ const SignUpScreen = () => {
                                 value={email}
                                 onChangeText={setEmail}
                                 style={{ color: 'white' }}
+                                autoCapitalize='none'
                                 leftIcon={
                                     <Icon
                                         style={{marginRight: 10}}
@@ -78,6 +108,7 @@ const SignUpScreen = () => {
                                 onChangeText={setPassword}
                                 secureTextEntry={true}
                                 style={{ color: 'white' }}
+                                autoCapitalize='none'
                                 leftIcon={
                                     <Icon
                                         style={{marginRight: 10}}
@@ -98,7 +129,11 @@ const SignUpScreen = () => {
                         <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
                             <View style={tw`flex items-center mt-5 flex-row justify-center bg-red-400 m-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
-                                <Text style={tw`text-white font-bold`}>Sign Up!</Text>
+                                {loading ? (
+                                    <ActivityIndicator color="#00ff00" />
+                                ) : (
+                                    <Text style={tw`text-white font-bold`}>Sign Up!</Text>
+                                )}
                             </View>
                         </TouchableOpacity>
 

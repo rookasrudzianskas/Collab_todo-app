@@ -42,6 +42,7 @@ const SignInScreen = () => {
                                 value={email}
                                 onChangeText={setEmail}
                                 style={{ color: 'white' }}
+                                autoCapitalize='none'
                                 leftIcon={
                                     <Icon
                                         style={{marginRight: 10}}
@@ -57,6 +58,7 @@ const SignInScreen = () => {
                                 placeholder='Password'
                                 value={password}
                                 onChangeText={setPassword}
+                                autoCapitalize='none'
                                 secureTextEntry={true}
                                 style={{ color: 'white' }}
                                 leftIcon={
