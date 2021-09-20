@@ -18,7 +18,7 @@ const ProjectItem = ({project}: ProjectItemProps) => {
 
     return (
         <TouchableOpacity activeOpacity={0.8}>
-            <View style={tw``}>
+            <View style={tw`mb-2`}>
                 {/*  tasklist */}
                 <View style={tw`flex flex-col`}>
                     <View style={tw`flex flex-row items-center p-2`}>
