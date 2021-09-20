@@ -9,11 +9,21 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 export default function TabTwoScreen() {
   return (
     <View style={tw`mt-16`}>
+
+      <View style={tw`flex flex-row items-center`}>
+        <MaterialCommunityIcons name="chevron-left" size={35} color="yellow" />
+        <Text style={tw`flex flex-1 text-xl`}>Rokas Developments</Text>
+        <MaterialCommunityIcons style={tw`mx-1`} name="chevron-down" size={30} color="yellow" />
+        <MaterialCommunityIcons style={tw`mx-1`} name="filter-menu-outline" size={30} color="yellow" />
+        <MaterialCommunityIcons style={tw`mx-1`} name="dots-horizontal" size={30} color="yellow" />
+      </View>
       {/*  tasklist */}
       <View style={tw``}>
         <View style={tw``}>
           <MaterialCommunityIcons name="file" size={24} color="gray" />
         </View>
+        <Text style={tw``}>Title</Text>
+        <Text style={tw``}>2d</Text>
       </View>
     </View>
   );
