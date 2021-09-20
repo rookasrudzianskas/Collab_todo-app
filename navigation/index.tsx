@@ -24,10 +24,15 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
     return (
-        <Stack.Navigator screenOptions={{ headerShown: false, headerStyle: {
-                backgroundColor: 'black', },   headerTintColor: '#fff', headerTitleStyle: {
+        <Stack.Navigator screenOptions={{ headerShown: false,
+            headerStyle: {
+                backgroundColor: 'black',
+            },
+            headerTintColor: '#fff',
+            headerTitleStyle: {
                 fontWeight: 'bold',
-            },}}>
+            },
+        }}>
 
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
             <Stack.Screen name="Home" component={ProjectsScreen} />
