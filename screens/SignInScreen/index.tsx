@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {
     Image,
     Text,
@@ -7,7 +7,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     KeyboardAvoidingView,
-    TouchableOpacity
+    TouchableOpacity, Alert
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
@@ -15,6 +15,8 @@ import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import {AntDesign} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
+import {gql, useMutation} from "@apollo/client";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 
 
 const SignInScreen = () => {
@@ -24,12 +26,44 @@ const SignInScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const SIGN_IN_MUTATION = gql`
+        mutation signIn($email: String!, $password: String!) {
+            signIn(input: { email: $email, password: $password}) {
+                token
+                user {
+                    id
+                    name
+                    email
+                }
+            }
+        }
+    `;
+
     const navigation = useNavigation();
+    const [signIn, { data, error, loading }] = useMutation(SIGN_IN_MUTATION);
+
+
+    useEffect(() => {
+        if (error) {
+            Alert.alert('Invalid credentials, try again 🚀');
+        }
+    }, [error]);
+
+    if(data) {
+        // save the token
+        AsyncStorage.setItem('token', data.signIn.token).then(() => {
+            // redirect home
+            navigation.navigate('Home');
+        })
+
+    }
+
     const onSubmit = () => {
         // we will do the logic here
         // console.log("ROKAS")
+        signIn({variables: {email, password}}).then();
 
-    }
+     }
 
     return (
     // @ts-ignore
