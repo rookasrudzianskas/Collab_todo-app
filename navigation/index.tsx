@@ -29,8 +29,8 @@ function RootNavigator() {
                 fontWeight: 'bold',
             },}}>
 
-            <Stack.Screen name="Home" component={ProjectsScreen} />
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
+            <Stack.Screen name="Home" component={ProjectsScreen} />
 
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>

@@ -35,7 +35,7 @@ export default function ProjectsScreen() {
           <View style={tw`p-2`}>
             <View style={tw`flex flex-row items-center`}>
   {/*// @ts-ignore*/}
-              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate("Home")}>
+              <TouchableOpacity activeOpacity={0.8} onPress={() => navigation.navigate("ToDoScreen")}>
                 <MaterialCommunityIcons name="chevron-left" size={35} color="yellow" />
               </TouchableOpacity>
               <Text style={tw`flex flex-1 text-xl`}>Rokas Developments</Text>
