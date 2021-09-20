@@ -27,6 +27,8 @@ const SignInScreen = () => {
     const navigation = useNavigation();
     const onSubmit = () => {
         // we will do the logic here
+        // console.log("ROKAS")
+
     }
 
     return (

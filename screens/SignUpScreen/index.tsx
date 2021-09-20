@@ -28,6 +28,7 @@ const SignUpScreen = () => {
     const navigation = useNavigation();
     const onSubmit = () => {
         // we will do the logic here
+        // console.log("ROKAS")
     }
 
     return (
@@ -38,7 +39,7 @@ const SignUpScreen = () => {
                         <View style={tw`mt-32 p-10`}>
 
                             <Input
-                                placeholder='Your name'
+                                placeholder='Your Name'
                                 value={name}
                                 onChangeText={setName}
                                 style={{ color: 'white' }}
