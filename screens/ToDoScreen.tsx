@@ -14,8 +14,44 @@ import tw from "tailwind-react-native-classnames";
 import TodoItem from "../components/ToDoItem";
 import {useState} from "react";
 import ToDoItem from "../components/ToDoItem";
+import {gql} from "@apollo/client";
 
 function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+
+    const GET_PROJECT = gql`
+        query getTaskList($id:ID!) {
+            getTaskList(id:$id) {
+                id
+                title
+                createdAt
+                todos {
+                    id
+                    content
+                    isCompleted
+                }
+            }
+        }
+    `;
+
+    const CREATE_TODO = gql`
+        mutation createToDo($content:String!, $taskListId: ID!) {
+            createToDo(content: $content, taskListId: $taskListId) {
+                id
+                content
+                isCompleted
+
+                taskList {
+                    id
+                    progress
+                    todos {
+                        id
+                        content
+                        isCompleted
+                    }
+                }
+            }
+        }
+    `
 
     let id = '4';
     const [title, setTitle] = useState('Untitled magical list');
