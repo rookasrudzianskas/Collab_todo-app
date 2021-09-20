@@ -108,7 +108,7 @@ const SignUpScreen = () => {
                             </View>
                         </TouchableOpacity>
 
-                       <View style={tw`mt-56`}>
+                       <View style={tw`mt-48`}>
                            <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
                                <View style={tw`flex items-center flex-row justify-center bg-blue-400 mx-12 my-3 py-2 rounded-xl`}>
                                    <AntDesign name="google" size={24}  style={tw`text-white mr-2`} color="white" />
