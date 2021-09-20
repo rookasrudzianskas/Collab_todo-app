@@ -37,8 +37,8 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         </View>
 
         <View style={tw``}>
-            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item }) => (
-                <ToDoItem onSubmit={() => createNewItem} todo={item}/>
+            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item, index }) => (
+                <ToDoItem onSubmit={() => createNewItem(index + 1)} todo={item}/>
             )} />
 
         </View>
