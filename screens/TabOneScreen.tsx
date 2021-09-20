@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList, KeyboardAvoidingView, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {FlatList, KeyboardAvoidingView, Platform, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
@@ -40,7 +40,8 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
     }
 
   return (
-      <KeyboardAvoidingView>
+      <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={Platform.OS === "ios" ? 150 : 0} style={{flex: 1}}>
+          <View style={styles.container}>
             <View style={tw`flex p-5`}>
                 <View style={tw`flex items-center justify-center mb-3`}>
                     <TextInput style={tw`font-bold text-2xl text-white`} defaultValue={title} value={title} onChangeText={setTitle} />
@@ -53,9 +54,16 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
                 </View>
             </View>
+          </View>
       </KeyboardAvoidingView>
   );
 }
 
 export default TabOneScreen;
 // done
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1
+    }
+});
