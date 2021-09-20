@@ -8,11 +8,11 @@ import {MaterialCommunityIcons} from "@expo/vector-icons";
 
 export default function TabTwoScreen() {
   return (
-    <View style={tw``}>
+    <View style={tw`mt-16`}>
       {/*  tasklist */}
       <View style={tw``}>
         <View style={tw``}>
-          <MaterialCommunityIcons name="file" size={24} color="white" />
+          <MaterialCommunityIcons name="file" size={24} color="gray" />
         </View>
       </View>
     </View>
