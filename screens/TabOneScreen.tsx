@@ -25,6 +25,11 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
             isCompleted: false,
         }]);
 
+
+    const createNewItem = (atIndex) => {
+        console.log("new item at", atIndex)
+    }
+
   return (
     <View style={tw`flex p-5`}>
         <View style={tw`flex items-center justify-center`}>
@@ -32,7 +37,9 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         </View>
 
         <View style={tw``}>
-            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item }) => <ToDoItem todo={item}/>} />
+            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item }) => (
+                <ToDoItem onSubmit={() => createNewItem} todo={item}/>
+            )} />
 
         </View>
     </View>

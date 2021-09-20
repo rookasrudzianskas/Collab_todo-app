@@ -8,10 +8,11 @@ interface ToDoItemProps {
         id: string,
         content: string,
         isCompleted: boolean,
-    }
+    },
+    onSubmit: () => void,
 }
 
-const ToDoItem = ({todo}: ToDoItemProps) => {
+const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [content, setContent] = useState('');
 
@@ -24,9 +25,6 @@ const ToDoItem = ({todo}: ToDoItemProps) => {
         setContent(todo.content);
     }, [todo]);
 
-    const onSubmit = () => {
-
-    }
 
 
     return (
