@@ -38,7 +38,7 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput onSubmitEditing={onSubmit} value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );

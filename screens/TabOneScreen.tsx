@@ -9,6 +9,8 @@ import ToDoItem from "../components/ToDoItem";
 
 function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
+    let id = '4';
+
     const [todos, setTodos] = useState([{
             id: '1',
             content: 'Buy Milk',
@@ -26,9 +28,15 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         }]);
 
 
-    const createNewItem = (atIndex) => {
+    const createNewItem = (atIndex: number) => {
         // console.log("new item at", atIndex)
-
+        const newTodos = [...todos];
+        newTodos.splice(atIndex, 0, {
+            id: id,
+            content: '',
+            isCompleted: false,
+        });
+        setTodos(newTodos);
     }
 
   return (
