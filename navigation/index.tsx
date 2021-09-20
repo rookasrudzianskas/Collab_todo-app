@@ -5,7 +5,6 @@ import { ColorSchemeName } from 'react-native';
 
 import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
-import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
 import ProjectsScreen from "../screens/ProjectsScreen";
 import ToDoScreen from "../screens/ToDoScreen";
