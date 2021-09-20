@@ -12,7 +12,7 @@ interface ProjectItemProps {
     }
 }
 
-const ProjectItem = (props: ProjectItemProps) => {
+const ProjectItem = ({project}: ProjectItemProps) => {
 
 
 
@@ -27,8 +27,8 @@ const ProjectItem = (props: ProjectItemProps) => {
                         </View>
                         <View style={tw`flex flex-col`}>
                             <View style={tw`flex flex-row`}>
-                                <Text style={tw`text-2xl font-medium ml-2`}>Title lorem ipsum</Text>
-                                <Text style={tw`ml-2 text-xl text-gray-500`}>2 h ago</Text>
+                                <Text style={tw`text-2xl font-medium ml-2`}>{project?.title || 'Untitled project'}</Text>
+                                <Text style={tw`ml-2 text-xl text-gray-500`}>{project?.createdAt || '2 h ago'}</Text>
                             </View>
 
                             <View style={tw`flex flex-row ml-3 mt-1 items-center`}>
