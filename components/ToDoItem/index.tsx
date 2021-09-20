@@ -4,7 +4,7 @@ import tw from "tailwind-react-native-classnames";
 import Checkbox from "../CheckBox";
 
 const ToDoItem = () => {
-    const [value, setValue] = useState(false);
+    const [isChecked, setIsChecked] = useState(false);
 
     return (
         <View>
@@ -12,7 +12,7 @@ const ToDoItem = () => {
                 {/*  Checkbox */}
                 <TouchableOpacity activeOpacity={0.8}>
                     <View style={tw`mt-2`}>
-                        <Checkbox  onPress={() => setValue(!value)} isChecked={value} />
+                        <Checkbox  onPress={() => setIsChecked(!isChecked)} isChecked={isChecked} />
                     </View>
                 </TouchableOpacity>
 
