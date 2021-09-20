@@ -14,10 +14,14 @@ interface ProjectItemProps {
 
 const ProjectItem = ({project}: ProjectItemProps) => {
 
+    const onPress = () => {
+        // console.warn(`open project ${project.title}`)
+
+    }
 
 
     return (
-        <TouchableOpacity activeOpacity={0.8}>
+        <TouchableOpacity onPress={onPress} activeOpacity={0.8}>
             <View style={tw`mb-2`}>
                 {/*  tasklist */}
                 <View style={tw`flex flex-col`}>
