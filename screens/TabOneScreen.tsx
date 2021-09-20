@@ -8,6 +8,22 @@ import {useState} from "react";
 
 function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
+    const [todos, setTodos] = useState([{
+            id: '1',
+            content: 'Buy Milk',
+            isCompleted: false,
+        },
+        {
+            id: '2',
+            content: 'Buy Banana',
+            isCompleted: true,
+        },
+        {
+            id: '3',
+            content: 'Buy Chocolate',
+            isCompleted: false,
+        }]);
+
   return (
     <View style={tw`flex p-5`}>
         <View style={tw`flex items-center justify-center`}>
