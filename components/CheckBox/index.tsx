@@ -11,7 +11,7 @@ const Checkbox = (props: CheckBoxProps) => {
     const name = props.isChecked ? 'checkbox-marked-outline' : 'checkbox-blank-outline';
     return (
         <View>
-            <MaterialCommunityIcons name="checkbox-marked-outline" size={24} color="black" />
+            <MaterialCommunityIcons name={name} size={24} color="black" />
         </View>
     );
 };
