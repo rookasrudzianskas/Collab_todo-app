@@ -7,7 +7,6 @@ import Checkbox from "../components/CheckBox";
 import {useState} from "react";
 
 function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
-    const [value, setValue] = useState(false);
 
   return (
     <View style={tw`flex p-5 items-center justify-center`}>
