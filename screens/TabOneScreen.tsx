@@ -12,7 +12,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
     const [todos, setTodos] = useState([{
             id: '1',
             content: 'Buy Milk',
-            isCompleted: false,
+            isCompleted: true,
         },
         {
             id: '2',
@@ -32,7 +32,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         </View>
 
         <View style={tw``}>
-            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={() => <ToDoItem />} />
+            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item }) => <ToDoItem todo={item}/>} />
 
         </View>
     </View>

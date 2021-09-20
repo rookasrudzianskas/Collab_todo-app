@@ -1,10 +1,27 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import Checkbox from "../CheckBox";
 
-const ToDoItem = () => {
+interface ToDoItemProps {
+    todo: {
+        id: string,
+        content: string,
+        isCompleted: boolean,
+    }
+}
+
+const ToDoItem = ({todo}: ToDoItemProps) => {
     const [isChecked, setIsChecked] = useState(false);
+
+
+    useEffect(() => {
+        if(!todo) {
+            return;
+        }
+        setIsChecked(todo.isCompleted);
+    }, [todo]);
+
 
     return (
         <View>
