@@ -14,6 +14,7 @@ import tw from "tailwind-react-native-classnames";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { Input } from 'react-native-elements';
 import {AntDesign} from "@expo/vector-icons";
+import {useNavigation} from "@react-navigation/native";
 
 
 const SignInScreen = () => {
@@ -23,6 +24,7 @@ const SignInScreen = () => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
 
+    const navigation = useNavigation();
     const onSubmit = () => {
         // we will do the logic here
     }
@@ -79,7 +81,7 @@ const SignInScreen = () => {
                             </View>
                         </TouchableOpacity>
 
-                        <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
+                        <TouchableOpacity activeOpacity={0.8}  onPress={() => navigation.navigate('SignUp')}>
                             <View style={tw`flex items-center -mt-8 flex-row justify-center bg-red-600 mx-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
                                 <Text style={tw`text-white font-bold`}>New here? Sign Up!</Text>
