@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {StyleSheet, TextInput, TouchableOpacity} from 'react-native';
+import {FlatList, StyleSheet, TextInput, TouchableOpacity} from 'react-native';
 import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
@@ -31,7 +31,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         </View>
 
         <View style={tw``}>
-            <TodoItem />
+            <FlatList data={todos} renderItem={} />
 
         </View>
     </View>
