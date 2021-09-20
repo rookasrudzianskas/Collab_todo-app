@@ -10,6 +10,7 @@ import ProjectsScreen from "../screens/ProjectsScreen";
 import ToDoScreen from "../screens/ToDoScreen";
 import SignInScreen from "../screens/SignInScreen";
 import SignUpScreen from "../screens/SignUpScreen";
+import SplashScreen from "../screens/SplashScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
     return (
@@ -25,7 +26,7 @@ const Stack = createStackNavigator<RootStackParamList>();
 
 function RootNavigator() {
     return (
-        <Stack.Navigator initialRouteName={"SignInScreen"} screenOptions={{ headerShown: false,
+        <Stack.Navigator initialRouteName={"SplashScreen"} screenOptions={{ headerShown: false,
             headerStyle: {
                 backgroundColor: 'black',
             },
@@ -37,6 +38,7 @@ function RootNavigator() {
 
             <Stack.Screen name="SignInScreen" component={SignInScreen} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
+            <Stack.Screen name="SplashScreen" component={SplashScreen} />
             <Stack.Screen name="Home" component={ProjectsScreen} />
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
 
