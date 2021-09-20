@@ -3,6 +3,7 @@ import {TouchableOpacity, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import {AntDesign, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {Text} from "../Themed";
+import {useNavigation} from "@react-navigation/native";
 
 interface ProjectItemProps {
     project: {
@@ -14,8 +15,12 @@ interface ProjectItemProps {
 
 const ProjectItem = ({project}: ProjectItemProps) => {
 
+    const navigation = useNavigation();
+
     const onPress = () => {
         // console.warn(`open project ${project.title}`)
+        // @ts-ignore
+        navigation.navigate('ToDoScreen', {id: project.id})
 
     }
 
