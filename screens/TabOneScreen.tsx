@@ -16,10 +16,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
         <View style={tw``}>
             <TodoItem />
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
-            <TodoItem />
+
         </View>
     </View>
   );
