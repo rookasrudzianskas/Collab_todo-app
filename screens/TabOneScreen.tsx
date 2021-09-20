@@ -27,7 +27,8 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
 
     const createNewItem = (atIndex) => {
-        console.log("new item at", atIndex)
+        // console.log("new item at", atIndex)
+
     }
 
   return (
