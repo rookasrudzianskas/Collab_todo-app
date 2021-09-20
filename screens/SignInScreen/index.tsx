@@ -19,9 +19,35 @@ const SignInScreen = () => {
 
     return (
         <View>
-            <View style={tw``}>
+            <View style={tw`mt-32 p-10`}>
                 <Input
-                    placeholder='BASIC INPUT'
+                    placeholder='Username or Email'
+                    value={email}
+                    onChangeText={setEmail}
+                    leftIcon={
+                        <Icon
+                            style={{marginRight: 10}}
+                            name='user'
+                            size={24}
+                            color='white'
+                        />
+
+                    }
+                />
+
+                <Input
+                    placeholder='Password'
+                    value={password}
+                    onChangeText={setPassword}
+                    leftIcon={
+                        <Icon
+                            style={{marginRight: 10}}
+                            name='lock'
+                            size={24}
+                            color='white'
+                        />
+
+                    }
                 />
             </View>
         </View>
