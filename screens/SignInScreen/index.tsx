@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { Image, Text, StyleSheet, View } from 'react-native';
 import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
+import Icon from 'react-native-vector-icons/FontAwesome';
+import { Input } from 'react-native-elements';
 
 
 const SignInScreen = () => {
@@ -18,7 +20,9 @@ const SignInScreen = () => {
     return (
         <View>
             <View style={tw``}>
-
+                <Input
+                    placeholder='BASIC INPUT'
+                />
             </View>
         </View>
     );
