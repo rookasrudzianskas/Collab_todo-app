@@ -13,6 +13,7 @@ interface ToDoItemProps {
 
 const ToDoItem = ({todo}: ToDoItemProps) => {
     const [isChecked, setIsChecked] = useState(false);
+    const [content, setContent] = useState('');
 
 
     useEffect(() => {
@@ -20,6 +21,7 @@ const ToDoItem = ({todo}: ToDoItemProps) => {
             return;
         }
         setIsChecked(todo.isCompleted);
+        setContent(todo.content);
     }, [todo]);
 
 
@@ -34,7 +36,7 @@ const ToDoItem = ({todo}: ToDoItemProps) => {
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );
