@@ -36,9 +36,11 @@ function RootNavigator() {
             },
         }}>
 
+            <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
             <Stack.Screen name="SignInScreen" component={SignInScreen} />
             <Stack.Screen name="SignUpScreen" component={SignUpScreen} />
-            <Stack.Screen name="SplashScreen" component={SplashScreen} />
+
             <Stack.Screen name="Home" component={ProjectsScreen} />
             <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
 
