@@ -4,7 +4,18 @@ import tw from "tailwind-react-native-classnames";
 import {AntDesign, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {Text} from "../Themed";
 
-const ProjectItem = () => {
+interface ProjectItemProps {
+    project: {
+        id: string,
+        title: string,
+        createdAt: string,
+    }
+}
+
+const ProjectItem = (props: ProjectItemProps) => {
+
+
+
     return (
         <TouchableOpacity activeOpacity={0.8}>
             <View style={tw``}>
