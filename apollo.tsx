@@ -9,7 +9,8 @@ import {
 
 const URI = 'http://localhost:4000/';
 
-const client = new ApolloClient({
+export const client = new ApolloClient({
     uri: URI,
     cache: new InMemoryCache()
 });
+
