@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {FlatList, StyleSheet, TouchableOpacity} from 'react-native';
+import {ActivityIndicator, Alert, FlatList, StyleSheet, TouchableOpacity} from 'react-native';
 
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
@@ -7,27 +7,40 @@ import tw from "tailwind-react-native-classnames";
 import {AntDesign, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 import {useNavigation} from "@react-navigation/native";
 import ProjectItem from "../components/ProjectItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
+import {gql, useQuery} from "@apollo/client";
 
 export default function ProjectsScreen() {
 
+  const MY_PROJECTS = gql`
+    query myTaskLists {
+      myTaskLists {
+        id
+        title
+        createdAt
+      }
+    }
+  `
   const navigation = useNavigation();
-  const [projects, setProjects] = useState([{
-    id: '1',
-    title: 'Project 1',
-    createdAt: '2 days ago',
-  },
-    {
-      id: '2',
-      title: 'Project 2',
-      createdAt: '3 days ago',
-    },
-    {
-      id: '3',
-      title: 'Project 3',
-      createdAt: '4 days ago',
-    },
-  ]);
+  const [projects, setProjects] = useState([]);
+  const { data, error, loading } = useQuery(MY_PROJECTS);
+
+  useEffect(() => {
+    if(error) {
+      Alert.alert("Error fetching the projects.", error.message);
+    }
+  }, [error]);
+
+
+  useEffect(() => {
+    if(data) {
+      setProjects(data.myTaskLists);
+    }
+  }, [data]);
+
+  if(loading) {
+    return <ActivityIndicator size="large" color="#00ff00" />
+  }
 
   return (
         <View style={tw`mt-16`}>
@@ -55,7 +68,11 @@ export default function ProjectsScreen() {
             </View>
           </View>
             <View>
-              <FlatList data={projects} renderItem={({item}) => <ProjectItem project={item} />}/>
+              {loading ? (
+                  <ActivityIndicator size="large" color="#00ff00" />
+              ): (
+                <FlatList data={projects} renderItem={({item}) => <ProjectItem project={item} />}/>
+              )}
             </View>
         </View>
   );

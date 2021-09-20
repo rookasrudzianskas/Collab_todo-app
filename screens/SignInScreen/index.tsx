@@ -7,7 +7,7 @@ import {
     TouchableWithoutFeedback,
     Keyboard,
     KeyboardAvoidingView,
-    TouchableOpacity, Alert
+    TouchableOpacity, Alert, ActivityIndicator
 } from 'react-native';
 import { BlurView } from 'expo-blur';
 import tw from "tailwind-react-native-classnames";
@@ -115,7 +115,11 @@ const SignInScreen = () => {
                         <TouchableOpacity onPress={onSubmit} activeOpacity={0.8}>
                             <View style={tw`flex items-center mt-5 flex-row justify-center bg-red-400 m-12 py-2 rounded-xl`}>
                                 <AntDesign name="login" size={24} style={tw`text-white mr-2`} color="white" />
+                                {loading ? (
+                                    <ActivityIndicator color="#00ff00" />
+                                ) : (
                                 <Text style={tw`text-white font-bold`}>Login!</Text>
+                                    ) }
                             </View>
                         </TouchableOpacity>
 
