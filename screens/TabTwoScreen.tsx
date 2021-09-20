@@ -4,7 +4,7 @@ import { StyleSheet } from 'react-native';
 import EditScreenInfo from '../components/EditScreenInfo';
 import { Text, View } from '../components/Themed';
 import tw from "tailwind-react-native-classnames";
-import {MaterialCommunityIcons} from "@expo/vector-icons";
+import {AntDesign, Entypo, Ionicons, MaterialCommunityIcons} from "@expo/vector-icons";
 
 export default function TabTwoScreen() {
   return (
@@ -14,7 +14,7 @@ export default function TabTwoScreen() {
         <View style={tw`flex flex-row items-center`}>
           <MaterialCommunityIcons name="chevron-left" size={35} color="yellow" />
           <Text style={tw`flex flex-1 text-xl`}>Rokas Developments</Text>
-          <MaterialCommunityIcons style={tw`mx-1`} name="chevron-down" size={30} color="yellow" />
+          <MaterialCommunityIcons name="check-underline" size={29} color="yellow" />
           <MaterialCommunityIcons style={tw`mx-1`} name="filter-menu-outline" size={30} color="yellow" />
           <MaterialCommunityIcons style={tw`mx-1`} name="dots-horizontal" size={30} color="yellow" />
         </View>
@@ -23,12 +23,38 @@ export default function TabTwoScreen() {
         </View>
       </View>
       {/*  tasklist */}
-      <View style={tw``}>
-        <View style={tw``}>
-          <MaterialCommunityIcons name="file" size={24} color="gray" />
+      <View style={tw`flex flex-col`}>
+      <View style={tw`flex flex-row items-center p-2`}>
+        <View style={tw`bg-gray-700 p-2 rounded-xl`}>
+          <MaterialCommunityIcons name="file-outline" size={40} color="gray" />
         </View>
-        <Text style={tw``}>Title</Text>
-        <Text style={tw``}>2d</Text>
+        <View style={tw`flex flex-col`}>
+          <View style={tw`flex flex-row`}>
+            <Text style={tw`text-2xl font-medium ml-2`}>Title lorem ipsum</Text>
+            <Text style={tw`ml-2 text-xl text-gray-500`}>2d</Text>
+          </View>
+
+          <View style={tw`flex flex-row ml-3 mt-1 items-center`}>
+            <View style={tw`flex flex-row items-center bg-gray-600 px-2 py-1 rounded-full`}>
+              <Entypo name="browser" size={24} color="white" />
+              <Text style={tw`ml-2`}>Date</Text>
+            </View>
+
+            <View style={tw`flex flex-row items-center mx-3 bg-gray-600 px-2 py-1 rounded-full`}>
+              <Ionicons name="person" size={24} color="white" />
+              <Text style={tw`ml-2`}>Assign</Text>
+            </View>
+
+            <View style={tw`flex flex-row items-center ml-0 bg-gray-600 px-2 py-1 rounded-full`}>
+              <AntDesign name="tag" size={24} color="white" />
+              <Text style={tw`ml-2`}>Tag</Text>
+          </View>
+          </View>
+        </View>
+
+
+
+      </View>
       </View>
     </View>
   );
