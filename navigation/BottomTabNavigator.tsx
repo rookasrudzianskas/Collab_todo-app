@@ -15,20 +15,13 @@ export default function BottomTabNavigator() {
 
     return (
         <BottomTab.Navigator
-            initialRouteName="Home"
-            tabBarOptions={{ activeTintColor: '#fff',
-                inactiveTintColor: '#cbcbcb',
-                activeBackgroundColor: 'black',
-                inactiveBackgroundColor: 'black',
-                style: {
-                    backgroundColor: 'black',
-                } }}>
+            initialRouteName="Home">
             <BottomTab.Screen
                 name="Home"
                 component={TabOneScreen}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color={color} />,
+                    tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color="white" />,
                 }}
             />
             <BottomTab.Screen
@@ -36,7 +29,7 @@ export default function BottomTabNavigator() {
                 component={TabTwoScreen}
                 options={{
                     headerShown: false,
-                    tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color={color} />,
+                    tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color="white" />,
                 }}
             />
 
