@@ -24,6 +24,10 @@ const ToDoItem = ({todo}: ToDoItemProps) => {
         setContent(todo.content);
     }, [todo]);
 
+    const onSubmit = () => {
+
+    }
+
 
     return (
         <View>
@@ -36,7 +40,7 @@ const ToDoItem = ({todo}: ToDoItemProps) => {
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput onSubmitEditing={onSubmit} value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );
