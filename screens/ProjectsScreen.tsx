@@ -9,7 +9,7 @@ import {useNavigation} from "@react-navigation/native";
 import ProjectItem from "../components/ProjectItem";
 import {useState} from "react";
 
-export default function TabTwoScreen() {
+export default function ProjectsScreen() {
 
   const navigation = useNavigation();
   const [projects, setProjects] = useState([{

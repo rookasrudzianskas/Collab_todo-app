@@ -7,6 +7,8 @@ import NotFoundScreen from '../screens/NotFoundScreen';
 import { RootStackParamList } from '../types';
 import BottomTabNavigator from './BottomTabNavigator';
 import LinkingConfiguration from './LinkingConfiguration';
+import ProjectsScreen from "../screens/ProjectsScreen";
+import ToDoScreen from "../screens/ToDoScreen";
 
 export default function Navigation({ colorScheme }: { colorScheme: ColorSchemeName }) {
     return (
@@ -26,7 +28,10 @@ function RootNavigator() {
                 backgroundColor: 'black', },   headerTintColor: '#fff', headerTitleStyle: {
                 fontWeight: 'bold',
             },}}>
-            <Stack.Screen name="Root" component={BottomTabNavigator} />
+
+            <Stack.Screen name="Home" component={ProjectsScreen} />
+            <Stack.Screen name="ToDoScreen" component={ToDoScreen} />
+
             <Stack.Screen name="NotFound" component={NotFoundScreen} options={{ title: 'Oops!' }} />
         </Stack.Navigator>
     );

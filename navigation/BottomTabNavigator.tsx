@@ -5,8 +5,8 @@ import * as React from 'react';
 
 import Colors from '../constants/Colors';
 import useColorScheme from '../hooks/useColorScheme';
-import TabTwoScreen from '../screens/TabTwoScreen';
-import TabOneScreen from "../screens/TabOneScreen";
+import ProjectsScreen from '../screens/ProjectsScreen';
+import ToDoScreen from "../screens/ToDoScreen";
 // @ts-ignore
 import { BottomTabParamList, HomeParamList, TabTwoParamList } from '../types';
 
@@ -20,7 +20,7 @@ export default function BottomTabNavigator() {
             initialRouteName="Home">
             <BottomTab.Screen
                 name="Home"
-                component={TabOneScreen}
+                component={ToDoScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color }) => <AntDesign name="home" size={24} color="white" />,
@@ -28,7 +28,7 @@ export default function BottomTabNavigator() {
             />
             <BottomTab.Screen
                 name="Coming Soon"
-                component={TabTwoScreen}
+                component={ProjectsScreen}
                 options={{
                     headerShown: false,
                     tabBarIcon: ({ color }) => <MaterialIcons name="video-library" size={24} color="white" />,
@@ -47,7 +47,7 @@ function TabOneNavigator() {
 
             <HomeStack.Screen
                 name="HomeScreen"
-                component={TabOneScreen}
+                component={ToDoScreen}
                 options={{ headerShown: false }}
             />
         </HomeStack.Navigator>
@@ -61,7 +61,7 @@ function TabTwoNavigator() {
         <TabTwoStack.Navigator>
             <TabTwoStack.Screen
                 name="TabTwoScreen"
-                component={TabTwoScreen}
+                component={ProjectsScreen}
                 options={{ headerShown: false }}
             />
         </TabTwoStack.Navigator>

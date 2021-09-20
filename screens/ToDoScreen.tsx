@@ -15,7 +15,7 @@ import TodoItem from "../components/ToDoItem";
 import {useState} from "react";
 import ToDoItem from "../components/ToDoItem";
 
-function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
+function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
     let id = '4';
     const [title, setTitle] = useState('Untitled magical list');
@@ -69,7 +69,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
   );
 }
 
-export default TabOneScreen;
+export default ToDoScreen;
 // done
 
 const styles = StyleSheet.create({
