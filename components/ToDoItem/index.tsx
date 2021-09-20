@@ -8,7 +8,7 @@ const ToDoItem = () => {
 
     return (
         <View>
-            <View style={tw`flex flex-row items-center`}>
+            <View style={tw`flex flex-row items-center my-1`}>
                 {/*  Checkbox */}
                 <TouchableOpacity activeOpacity={0.8}>
                     <View style={tw`mt-2`}>
