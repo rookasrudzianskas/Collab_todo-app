@@ -5,6 +5,7 @@ import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
 import TodoItem from "../components/ToDoItem";
 import {useState} from "react";
+import ToDoItem from "../components/ToDoItem";
 
 function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
@@ -16,7 +17,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         {
             id: '2',
             content: 'Buy Banana',
-            isCompleted: true,
+            isCompleted: false,
         },
         {
             id: '3',
@@ -31,7 +32,7 @@ function TabOneScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         </View>
 
         <View style={tw``}>
-            <FlatList data={todos} renderItem={} />
+            <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={() => <ToDoItem />} />
 
         </View>
     </View>
