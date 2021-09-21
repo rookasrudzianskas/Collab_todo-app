@@ -2,7 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import Checkbox from "../CheckBox";
-import {gql} from "@apollo/client";
+import {gql, useMutation} from "@apollo/client";
 
 interface ToDoItemProps {
     todo: {
@@ -13,30 +13,43 @@ interface ToDoItemProps {
     onSubmit: () => void,
 }
 
-const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
-    const [isChecked, setIsChecked] = useState(false);
-    const [content, setContent] = useState('');
-    const input = useRef(null);
+const UPDATE_TODO = gql`
+    mutation updateToDo($id:ID!, $content: String, $isCompleted: Boolean) {
+        updateToDo(id: $id, content: $content, isCompleted: $isCompleted) {
+            id
+            content
+            isCompleted
 
-    const UPDATE_TODO = gql`
-        mutation updateToDo($id:ID!, $content: String, $isCompleted: Boolean) {
-            updateToDo(id: $id, content: $content, isCompleted: $isCompleted) {
-                id
-                content
-                isCompleted
-
-                taskList {
-                    title
-                    progress
-                    todos {
-                        id
-                        content
-                        isCompleted
-                    }
+            taskList {
+                title
+                progress
+                todos {
+                    id
+                    content
+                    isCompleted
                 }
             }
         }
-    `;
+    }
+`;
+
+const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
+    const [isChecked, setIsChecked] = useState(false);
+    const [content, setContent] = useState('');
+    const [updateItem] = useMutation(UPDATE_TODO);
+    const input = useRef(null);
+
+    const callUpdateItem = () => {
+        updateItem({
+            variables: {
+                id: todo.id,
+                content,
+                isCompleted: isChecked,
+            }
+        }).then()
+    }
+
+
 
 
     useEffect(() => {
@@ -73,7 +86,9 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
                 {/*  Checkbox */}
                 <TouchableOpacity activeOpacity={0.8}>
                     <View style={tw`mt-2`}>
-                        <Checkbox  onPress={() => setIsChecked(!isChecked)} isChecked={isChecked} />
+                        <Checkbox  onPress={() => {
+                            setIsChecked(!isChecked);
+                        }} isChecked={isChecked} />
                     </View>
                 </TouchableOpacity>
 
