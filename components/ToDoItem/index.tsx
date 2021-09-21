@@ -39,17 +39,15 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
     const [updateItem] = useMutation(UPDATE_TODO);
     const input = useRef(null);
 
-    useEffect(() => {
-
+    const callUpdateItem = () => {
         updateItem({
             variables: {
                 id: todo.id,
                 content,
                 isCompleted: isChecked,
             }
-        }).then();
-
-    }, [content, isChecked]);
+        }).then()
+    }
 
 
 
@@ -90,12 +88,13 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
                     <View style={tw`mt-2`}>
                         <Checkbox  onPress={() => {
                             setIsChecked(!isChecked);
+                            callUpdateItem();
                         }} isChecked={isChecked} />
                     </View>
                 </TouchableOpacity>
 
                 {/*   Text input  */}
-                <TextInput ref={input} onKeyPress={onKeyPress} onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
+                <TextInput ref={input} onEndEditing={callUpdateItem} onKeyPress={onKeyPress} onSubmitEditing={onSubmit} blurOnSubmit value={content} onChangeText={setContent} multiline style={tw`flex flex-1 text-white text-xl`} />
             </View>
         </View>
     );
