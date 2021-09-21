@@ -39,15 +39,17 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
     const [updateItem] = useMutation(UPDATE_TODO);
     const input = useRef(null);
 
-    const callUpdateItem = () => {
+    useEffect(() => {
+
         updateItem({
             variables: {
                 id: todo.id,
                 content,
                 isCompleted: isChecked,
             }
-        }).then()
-    }
+        }).then();
+
+    }, [content, isChecked]);
 
 
 
