@@ -55,7 +55,7 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         }
     `;
 
-    const [title, setTitle] = useState('Untitled magical list');
+    // const [title, setTitle] = useState('Untitled magical list');
     const [project, setProject] = useState(null);
     const [todos, setTodos] = useState([{
         id: '1',
@@ -87,7 +87,7 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
     useEffect(() => {
         if (data) {
             setProject(data.getTaskList);
-            setTitle(data.getTaskList.title);
+            // setTitle(data.getTaskList.title);
         }
     }, [data]);
 
@@ -96,13 +96,13 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
     const createNewItem = (atIndex: number) => {
         // console.log("new item at", atIndex)
-        const newTodos = [...todos];
-        newTodos.splice(atIndex, 0, {
-            id: id,
-            content: '',
-            isCompleted: false,
-        });
-        setTodos(newTodos);
+        // const newTodos = [...todos];
+        // newTodos.splice(atIndex, 0, {
+        //     id: id,
+        //     content: '',
+        //     isCompleted: false,
+        // });
+        // setTodos(newTodos);
     }
 
   return (
