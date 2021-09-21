@@ -15,7 +15,7 @@ import tw from "tailwind-react-native-classnames";
 import TodoItem from "../components/ToDoItem";
 import {useEffect, useState} from "react";
 import ToDoItem from "../components/ToDoItem";
-import {gql, useQuery} from "@apollo/client";
+import {gql, useMutation, useQuery} from "@apollo/client";
 import {useRoute} from "@react-navigation/native";
 
 function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
@@ -74,9 +74,19 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         }]);
 
     const route = useRoute();
-    let id = '4';
     // @ts-ignore
-    const {data, error, loading} = useQuery(GET_PROJECT, { variables: { id: route.params.id }});
+    const id = route.params.id
+    // @ts-ignore
+    const {
+        data,
+        error,
+        loading
+    // @ts-ignore
+    } = useQuery(GET_PROJECT, { variables: { id: id }});
+
+    const [
+        createToDo, {data: createToDoData, error: createTodoError }
+    ] = useMutation(CREATE_TODO);
 
     useEffect(() => {
         if (error) {
@@ -96,6 +106,12 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
 
     const createNewItem = (atIndex: number) => {
+        createToDo({
+            variables: {
+                content: '',
+                taskListId: id,
+            }
+        })
         // console.log("new item at", atIndex)
         // const newTodos = [...todos];
         // newTodos.splice(atIndex, 0, {
