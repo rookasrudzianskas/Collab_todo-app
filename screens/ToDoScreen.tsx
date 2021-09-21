@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+    Alert,
     FlatList, Keyboard,
     KeyboardAvoidingView,
     Platform,
@@ -12,9 +13,10 @@ import { Text, View } from '../components/Themed';
 import { RootTabScreenProps } from '../types';
 import tw from "tailwind-react-native-classnames";
 import TodoItem from "../components/ToDoItem";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import ToDoItem from "../components/ToDoItem";
-import {gql} from "@apollo/client";
+import {gql, useQuery} from "@apollo/client";
+import {useRoute} from "@react-navigation/native";
 
 function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
@@ -51,15 +53,15 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
                 }
             }
         }
-    `
+    `;
 
-    let id = '4';
     const [title, setTitle] = useState('Untitled magical list');
+    const [project, setProject] = useState(null);
     const [todos, setTodos] = useState([{
-            id: '1',
-            content: 'Buy Milk',
-            isCompleted: true,
-        },
+        id: '1',
+        content: 'Buy Milk',
+        isCompleted: true,
+    },
         {
             id: '2',
             content: 'Buy Banana',
@@ -70,6 +72,26 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
             content: 'Buy Chocolate',
             isCompleted: false,
         }]);
+
+    const route = useRoute();
+    let id = '4';
+    const {data, error, loading} = useQuery(GET_PROJECT, { variables: { id: route.params.id }});
+
+    useEffect(() => {
+        if (error) {
+            console.log(error);
+            Alert.alert('Error fetching project', error.message);
+        }
+    }, [error]);
+
+    useEffect(() => {
+        if (data) {
+            setProject(data.getTaskList);
+            setTitle(data.getTaskList.title);
+        }
+    }, [data]);
+
+
 
 
     const createNewItem = (atIndex: number) => {
