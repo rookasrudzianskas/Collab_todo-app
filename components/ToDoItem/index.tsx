@@ -2,6 +2,7 @@ import React, {useEffect, useRef, useState} from 'react';
 import {TextInput, TouchableOpacity, View} from "react-native";
 import tw from "tailwind-react-native-classnames";
 import Checkbox from "../CheckBox";
+import {gql} from "@apollo/client";
 
 interface ToDoItemProps {
     todo: {
@@ -16,6 +17,26 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
     const [isChecked, setIsChecked] = useState(false);
     const [content, setContent] = useState('');
     const input = useRef(null);
+
+    const UPDATE_TODO = gql`
+        mutation updateToDo($id:ID!, $content: String, $isCompleted: Boolean) {
+            updateToDo(id: $id, content: $content, isCompleted: $isCompleted) {
+                id
+                content
+                isCompleted
+
+                taskList {
+                    title
+                    progress
+                    todos {
+                        id
+                        content
+                        isCompleted
+                    }
+                }
+            }
+        }
+    `;
 
 
     useEffect(() => {
