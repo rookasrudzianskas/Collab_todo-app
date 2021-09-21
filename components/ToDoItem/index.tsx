@@ -101,5 +101,3 @@ const ToDoItem = ({todo, onSubmit }: ToDoItemProps) => {
 };
 
 export default ToDoItem;
-
-// the application is done
