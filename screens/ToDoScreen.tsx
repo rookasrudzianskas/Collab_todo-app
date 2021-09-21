@@ -75,6 +75,7 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
     const route = useRoute();
     let id = '4';
+    // @ts-ignore
     const {data, error, loading} = useQuery(GET_PROJECT, { variables: { id: route.params.id }});
 
     useEffect(() => {
