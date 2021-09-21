@@ -86,7 +86,7 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
 
     const [
         createToDo, {data: createToDoData, error: createTodoError }
-    ] = useMutation(CREATE_TODO);
+    ] = useMutation(CREATE_TODO, { refetchQueries: GET_PROJECT});
 
     useEffect(() => {
         if (error) {
