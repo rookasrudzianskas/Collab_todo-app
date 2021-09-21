@@ -109,7 +109,7 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
         return null;
     }
 
-  return (
+    return (
       <KeyboardAvoidingView behavior={Platform.OS === "ios" ? "padding" : "height"} keyboardVerticalOffset={Platform.OS === "ios" ? 150 : 0} style={{flex: 1}}>
           <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
               <View style={styles.container}>
@@ -119,7 +119,8 @@ function ToDoScreen({ navigation }: RootTabScreenProps<'TabOne'>) {
                     </View>
 
                     <View style={tw``}>
-                        <FlatList showsVerticalScrollIndicator={false} data={todos} renderItem={({ item, index }) => (
+  {/*// @ts-ignore*/}
+                        <FlatList showsVerticalScrollIndicator={false} data={project.todos} renderItem={({ item, index }) => (
                             <ToDoItem onSubmit={() => createNewItem(index + 1)} todo={item}/>
                         )} />
 
